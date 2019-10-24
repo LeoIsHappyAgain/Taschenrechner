@@ -41,7 +41,8 @@ class Calculator {
 		return $ergebnis;
 	}
 	private function readFromFile(){
-		return (int)file_get_contents("ergebnis.txt");
+		//return (int)file_get_contents("ergebnis.txt");
+		return $_REQUEST["hiddenone"] ? $_REQUEST["hiddenone"] : (float)file_get_contents("ergebnis.txt");
 	}
 }
 
@@ -89,6 +90,7 @@ $calculator->writeToFile($ergebnis);
 <button type="button" onclick="setOperator('/')">/</button>
 <button type="button" onclick="clearValue()">clear</button>
 <button type="button" onclick="allclear()">allclear</button>
+<button type="button" onclick="addNumber('.')">,</button>
 
 	<form action="/" method="post">
 	 <!--input type="number" name="Firstnumber" id="firstnumber" value="0" onkeyup="a()"><br-->
@@ -100,7 +102,10 @@ $calculator->writeToFile($ergebnis);
  </select><br-->
 	 <!--input type="number" name="Secondnumber" id="secondnumber" value="0" onkeyup="b()"><br-->
 	<input type="submit" value="=">
-	<!--input type="hidden" name="hiddenone" id="hiddenone"-->
+  <input type="hidden" name="hiddenone" id="hiddenone" value="
+<?php
+echo $ergebnis;
+?>">
 	<input type="hidden" name="hiddentwo" id="hiddentwo">
 	<input type="hidden" name="operator" id="operator">
 	<input type="text" id="result" value="
@@ -119,6 +124,8 @@ echo $ergebnis;
 
 	function setOperator(operator) {
 		document.getElementById("operator").value=operator;
+		document.getElementById("hiddenone").value=document.getElementById("hiddentwo").value
+		clearValue();
 	}
 
 	function addNumber(number) {
@@ -146,6 +153,7 @@ function allclear() {
   xhttp.open("GET", "index.php?reset=1", true);
   xhttp.send();
 }
+
 
 	</script>
 </body>
