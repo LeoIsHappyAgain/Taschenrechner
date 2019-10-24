@@ -74,7 +74,16 @@ $calculator->writeToFile($ergebnis);
 <title>Taschenrechner</title>
 </header>
 <body>
-<button type="button" onclick="addNumber(0)">0</button>
+	<input type="text" id="result" value="
+<?php
+echo $ergebnis;
+?>" readonly><br>
+<button type="button" onclick="setOperator('+')">+</button>
+<button type="button" onclick="setOperator('-')">-</button>
+<button type="button" onclick="setOperator('*')">*</button>
+<button type="button" onclick="setOperator('/')">/</button>
+<button type="button" onclick="clearValue()">clear</button>
+<button type="button" onclick="allclear()">allclear</button>
 <button type="button" onclick="addNumber(1)">1</button>
 <button type="button" onclick="addNumber(2)">2</button>
 <button type="button" onclick="addNumber(3)">3</button>
@@ -84,12 +93,7 @@ $calculator->writeToFile($ergebnis);
 <button type="button" onclick="addNumber(7)">7</button>
 <button type="button" onclick="addNumber(8)">8</button>
 <button type="button" onclick="addNumber(9)">9</button>
-<button type="button" onclick="setOperator('+')">+</button>
-<button type="button" onclick="setOperator('-')">-</button>
-<button type="button" onclick="setOperator('*')">*</button>
-<button type="button" onclick="setOperator('/')">/</button>
-<button type="button" onclick="clearValue()">clear</button>
-<button type="button" onclick="allclear()">allclear</button>
+<button type="button" onclick="addNumber(0)">0</button>
 <button type="button" onclick="addNumber('.')">,</button>
 
 	<form action="/" method="post">
@@ -108,10 +112,6 @@ echo $ergebnis;
 ?>">
 	<input type="hidden" name="hiddentwo" id="hiddentwo">
 	<input type="hidden" name="operator" id="operator">
-	<input type="text" id="result" value="
-<?php
-echo $ergebnis;
-?>" readonly>
 	</form>
 	<script>
 	/*function a (){
