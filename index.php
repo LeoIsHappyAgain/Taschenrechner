@@ -71,19 +71,48 @@
 
 <html>
 	<head>
-		<style>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+	<style>
+		body{
+			margin:0;
+		}
+		button,
+		body,
+		.anzeige input,
+		.equal{
+		font-family: 'Open Sans', sans-serif;
+		font-weight:bold;
+		}
+		button,
+		.equal{
+			font-size: 4vmin;
+			text-shadow: 1px 1px 2.5px black, -1px -1px 2.5px black;
+			box-shadow: 2px 2px 10px 0 #B0B0B0 inset, -2px -2px 10px 0 black inset;
+			border-width: 2px;
+		 border-style: solid;
+		 border-color: transparent;
+		}
 			button {
-		    color: black;
+		    color: white;
 		    display: block;
 		    text-align: center;
-		    background-color: lightgrey;
+		    background-color:#4F4F4F;
 		    padding: 0;
-		    border-width: 2px;
-		    border-style: solid;
-		    border-color: lightgrey;
+				border-radius: 10px;
 			}
 			.taschenrechner {
-				background-color:grey;
+
+				background:
+				linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+				linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+				linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+				linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+				linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+				linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+				background-color: #131313;
+				background-size: 20px 20px;
+
+
 				height: 100vmin;
 				width: 100%;
 				max-width: calc(4 * ((14vmin) + (2 * 2px) + (2 * 1vmin)));
@@ -91,27 +120,66 @@
 			}
 
 			.anzeige {
-				background-color:darkblue;
 				width:100%;
 			}
 			.anzeige input {
-				width: 100%;
+				background-color:#228b22;
+				width: calc(100% - 6vmin);
+				height:10vmin;
+				margin:3vmin;
+				font-size:5vmin;
+				color:white;
+				padding:3vmin;
+				text-align:right;
+				margin-bottom:1vmin;
+				border-color:#006400;
+				text-shadow: 1px 1px 2.5px #006400, -1px -1px 2.5px #006400;
+				box-shadow: 1px 1px 10px 0 #006400 inset;
 			}
-			.operator button,
-			.ziffern button,
-			.clearings button {
-		    border-width: 2px;
-		    border-style: solid;
-		    border-color: lightblue;
+			.operator button{
 				margin: 1vmin;
-				width: 14vmin;
-				height: 14vmin;
+				width: 13vmin;
+				height: 13vmin;
+				display: inline-block;
+				margin-left: 1.75vmin;
+			}
+
+			.ziffern button{
+				margin: 1vmin;
+				width: 13vmin;
+				height: 13vmin;
 				display: inline-block;
 			}
 
+			.equal {
+				margin: 1vmin;
+				width: 14vmin;
+				height: 8vmin;
+				display: inline-block;
+				margin-top: 3vmin;
+    		margin-left: 44vmin;
+				color:white;
+				background-color:#4F4F4F;
+				border-radius: 10px;
+			}
+
+			.clearings button {
+				margin: 1vmin;
+				width: 14vmin;
+				height: 8vmin;
+				display: inline-block;
+				margin-top: 2vmin;
+				margin-bottom: 2vmin;
+						}
+
+.clearings button:first-of-type{
+	margin-left: 31vmin;
+}
 			.ziffern {
 				max-width: calc(3 * ((14vmin) + (2 * 2px) + (2 * 1vmin)));
 				float:left;
+				margin-left: 1.5vmin;
+    		margin-right: -2vmin;
 			}
 
 			.operator {
@@ -137,8 +205,8 @@
 			</div>
 
 			<div class="clearings">
-				<button type="button" onclick="clearValue()">clear</button>
-				<button type="button" onclick="allclear()">allclear</button>
+				<button type="button" onclick="clearValue()">c</button>
+				<button type="button" onclick="allclear()">ac</button>
 			</div>
 
 			<div class="ziffern">
@@ -151,8 +219,8 @@
 				<button type="button" onclick="addNumber(7)">7</button>
 				<button type="button" onclick="addNumber(8)">8</button>
 				<button type="button" onclick="addNumber(9)">9</button>
-				<button type="button" onclick="addNumber(0)">0</button>
 				<button type="button" onclick="addNumber('.')">,</button>
+				<button type="button" onclick="addNumber(0)">0</button>
 			</div>
 
 			<div class="operator">
@@ -171,7 +239,7 @@
 			   <option value="/">/</option>
 			 </select><br-->
 				 <!--input type="number" name="Secondnumber" id="secondnumber" value="0" onkeyup="b()"><br-->
-				<input type="submit" value="=">
+				<input class="equal" type="submit" value="=">
 			  <input type="hidden" name="hiddenone" id="hiddenone" value="<?php	echo $ergebnis;?>">
 				<input type="hidden" name="hiddentwo" id="hiddentwo">
 				<input type="hidden" name="operator" id="operator">
